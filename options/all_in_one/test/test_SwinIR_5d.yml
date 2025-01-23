@@ -1,0 +1,79 @@
+name: SwinIR_5d_no_dcpt
+suffix: ~  # add suffix to saved images
+model_type: SRModel
+scale: 1
+crop_border: 0  # crop border when evaluation. If None, crop the scale pixels
+num_gpu: 1  # set num_gpu: 0 for cpu mode
+manual_seed: 0
+
+# dataset and data loader settings
+datasets:
+  test_1:
+    name: Rain100L
+    type: PairedImageDataset
+    dataroot_gt: /mnt/nasv3/hjk/DerainDataset/100L/Rain100L/norain
+    dataroot_lq: /mnt/nasv3/hjk/DerainDataset/100L/Rain100L/rainy
+    io_backend:
+      type: disk
+  test_2:
+    name: CBSD68
+    type: PairedImageDenoiseDataset
+    dataroot_gt: /mnt/nasv3/hjk/drformer/datasets/denoise/test/CBSD68
+    io_backend:
+      type: disk
+    sigma_type: constant
+    sigma_range: 25
+  test_3:
+    name: SOTS
+    type: PairedImageDehazeDataset
+    dataroot_gt: /mnt/nasv3/hjk/DehazeDataset/SOTS/outdoor/gt
+    dataroot_lq: /mnt/nasv3/hjk/DehazeDataset/SOTS/outdoor/hazy
+    io_backend:
+      type: disk
+    suffix: .png
+  test_4:
+    name: deblur
+    type: PairedImageDataset
+    dataroot_gt: /mnt/nasv3/hjk/uformer_dataset/GoPro/test/groundtruth
+    dataroot_lq: /mnt/nasv3/hjk/uformer_dataset/GoPro/test/input
+    io_backend:
+      type: disk
+  test_5:
+    name: LowLight
+    type: PairedImageDataset
+    dataroot_gt: /mnt/nasv3/hjk/LowLightDataset/lol_v1_eval/high
+    dataroot_lq: /mnt/nasv3/hjk/LowLightDataset/lol_v1_eval/low
+    io_backend:
+      type: disk
+
+# network structures
+network_g:
+  type: SwinIR
+  embed_dim: 180
+  depths: [6, 6, 6, 6, 6, 6]
+  num_heads: [6, 6, 6, 6, 6, 6]
+  mlp_ratio: 2.0
+  window_size: 8
+  upscale: 1
+
+path:
+  pretrain_network_g: pretrained_models/dcpt_swinir_5d.pth
+  param_key_g: params_ema
+  strict_load_g: true
+
+# validation settings
+val:
+  save_img: false
+  suffix: ~  # add suffix to saved images, if None, use exp name
+
+  metrics:
+    psnr:
+      type: calculate_psnr
+      crop_border: 0
+      test_y_channel: false
+      image_range: 255.0
+    ssim:
+      type: calculate_ssim
+      crop_border: 0
+      test_y_channel: false
+      image_range: 255.0

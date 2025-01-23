@@ -1,0 +1,40 @@
+repos:
+  - repo: https://github.com/psf/black
+    rev: 22.12.0
+    hooks:
+      - id: black
+  - repo: https://github.com/pycqa/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+        args: ["--profile", "black"]
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: ^dicts/
+      - id: check-yaml
+      - id: end-of-file-fixer
+        exclude: ^dicts/
+      - id: requirements-txt-fixer
+      - id: check-merge-conflict
+      - id: fix-encoding-pragma
+        args: ["--remove"]
+      - id: mixed-line-ending
+        args: ["--fix=lf"]
+      - id: check-yaml
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.2.2
+    hooks:
+      - id: codespell
+        args: ["-S", "*.ipynb", "-S", "*.cu", "-S", "*.h", "-S", "*.cpp", "-L", "formating,theis,te,nd,thre,Gool,gool,lod,patten,confectionary"]
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.16
+    hooks:
+      - id: mdformat
+        args: ["--number", "--table-width", "200"]
+        # language_version: python3.8
+        additional_dependencies:
+          - mdformat-openmmlab
+          - mdformat_frontmatter
+          - linkify-it-py
