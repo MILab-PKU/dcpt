@@ -1,8 +1,10 @@
 # Universal Image Restoration Pre-training via Degradation Classification ([ICLR 2025](https://openreview.net/forum?id=PacBhLzeGO))
 
-[JiaKui Hu](https://scholar.google.com/citations?user=VagFt-sAAAAJ), [Zhengjian Yao](https://scholar.google.com/citations?user=D8rEFlEAAAAJ), [Lujia Jin](https://scholar.google.com/citations?user=-BWasB8AAAAJ), [Yanye Lu](https://scholar.google.com/citations?user=WSFToOMAAAAJ)*
+[JiaKui Hu](https://scholar.google.com/citations?user=VagFt-sAAAAJ), [Lujia Jin](https://scholar.google.com/citations?user=-BWasB8AAAAJ), [Zhengjian Yao](https://scholar.google.com/citations?user=D8rEFlEAAAAJ), [Yanye Lu](https://scholar.google.com/citations?user=WSFToOMAAAAJ)*
 
 MILab, Peking University
+
+[中文解读](https://blog.jongkhu.com/article/dcpt)
 
 ---
 
@@ -10,11 +12,11 @@ MILab, Peking University
 
 - 2025-1-23: Our paper was accepted by ICLR 2025.
 
-- 2025-1-23: Release the inference scripts and pre-trained models of DCPT.
+- 2025-1-27: Release the inference scripts and pre-trained models of DCPT.
 
 **TODO-lists:**
 
-- [ ] Release the train scipts.
+- [ ] Release the train scripts.
 - [ ] Handle real-world mixed-degradation images.
 
 ## 1. Abstract
@@ -102,13 +104,13 @@ If you find this repository useful, please consider giving a star ⭐ and citati
 @inproceedings{
 hu2025universal,
 title={Universal Image Restoration Pre-training via Degradation Classification},
-author={Hu JiaKui, Zhengjian Yao, Jin Lujia, Lu Yanye},
+author={Hu JiaKui and Zhengjian Yao and Jin Lujia and Lu Yanye},
 booktitle={The Thirteenth International Conference on Learning Representations},
 year={2025},
 url={https://openreview.net/forum?id=PacBhLzeGO}
 }
 ```
 
-For help or issues using this git, please feel free to submit a GitHub issue.
+For help or issues using this git, please submit a GitHub issue.
 
-For other communications related to this git, please contact `jkhu29@stu.pku.edu.cn`.
+For other communications related to this git, please get in touch with `jkhu29@stu.pku.edu.cn`.
